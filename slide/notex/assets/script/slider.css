@@ -173,11 +173,38 @@ footer{
     width: 24px;
 }
 
-#play-slide.icon{
-    position: fixed;
-    left: calc( 50% - 36px);
-    right: calc( 50% - 64px);
+#start-session{
     top: 65%;
+    position: fixed;
+    left: calc( 50% - 150px);
+    right: calc( 50% - 256px);
+    display: flex;
+    align-items: center;
+}
+
+#start-session #play-langs{
+    margin-right: 1.5rem;
+}
+
+#start-session #play-langs label{
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+#start-session #voice{
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 10px;;
+    background-color: #111;
+}
+
+
+
+#play-slide.icon{
+
+
     background-color: #09c;
     height: 64px;
     width: 64px;
@@ -209,13 +236,13 @@ footer{
 }
 
 
-.slide-on-play #play-slide{
+.slide-on-play #start-session{
     opacity: 0;
     transform: scale(.3);
     transition: 100ms;
 }
 
-.slide-on-stop #play-slide{
+.slide-on-stop #start-session{
     opacity: 1;
     transform: scale(1);
     transition: 300ms;

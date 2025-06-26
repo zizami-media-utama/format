@@ -11,53 +11,47 @@ let playstat = true;
 let autoplay = true;
 let language = document.getElementById('voice');
 
+
 // GLOBAL VARIABLE
 let page_audio = document.getElementById('main-chanel');
 let page_timer = document.getElementById('progressbar');
 let page_progs = document.getElementById('progrestime');
 
 
+
 // PREPARATION
-window.location.hash = '';  // clean url hash, because of url hash cause error for audio 
-impress().init();           // load impress slide engine
-synth.cancel();             // clean old session of utterence and start fresh session
-
-
-// LANGUAGE NAV
+window.location.hash = '';                                                  // clean url hash, because of url hash cause error for audio 
+impress().init();                                                           // load impress slide engine
+synth.cancel();                                                             // clean old session of utterence and start fresh session
 
 
 
 // MAIN SOURCE
-
-// populate the voice options.
-function speak_lang() {
-    
-	let voices = speechSynthesis.getVoices();                          // Fetch the available voices. 
-  
-	voices.forEach(function(voice, i) {
-        option = document.createElement('option');                   // Create a new option element.
-        option.value = voice.name;                                   // Set the options value and text.
+let speak_lang = ()=> {                                                     // populate the voice options.
+ 
+	let langtop = speechSynthesis.getVoices();                              // Fetch the available voices. 
+  	langtop.forEach(function(voice, i) {
+        option = document.createElement('option');                          // Create a new option element.
+        option.value = voice.name;                                          // Set the options value and text.
         option.innerText = option.value.replace("Google", "");
-        language.appendChild(option);                                // Set the options value and text.
+        language.appendChild(option);                                       // Set the options value and text.
 	});
 }
 
-// Execute loadVoices.
-speak_lang();
+speak_lang();                                                               // loads voices asynchronously.
+window.speechSynthesis.onvoiceschanged = function(e) { speak_lang(); };
 
-
-// chrome loads voices asynchronously.
-window.speechSynthesis.onvoiceschanged = function(e) {
-    speak_lang();
-};
 
 let speak_main = (text)=> {
 
-    let narator = new SpeechSynthesisUtterance(text); // create a speech synthesis
-    narator.voice = voices[0];                        // Choose a specific voice
+    let narator = new SpeechSynthesisUtterance(text);                       // create a speech synthesis
                 
     if ( language.value ) {
 		narator.voice = synth.getVoices().filter(function(voice) { return voice.name == language.value; })[0];
+    }
+    else {
+        narator.voice = voices[0];                                          // Choose a specific voice
+        narator.lang  = "id";                                               // setup narator langguage
 	}
 
     synth.speak(narator);       
@@ -70,7 +64,7 @@ let speak_main = (text)=> {
         console.log('Robot got error or cant reach data');
     });
 
-    console.log(text);                                  // render console source data
+    console.log(text);                                                      // render console source data
 }
 
 

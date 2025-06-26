@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/script/slider.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module" ></script>
+    <link rel="manifest" href="assets/script/manifest.json">
 </head>
 <body id="we-slide">
     <header>
@@ -151,9 +152,14 @@
     </main>
     <footer>
         <div id="panel" class="flex align-center slide-on-stop">
-            <div class="option">
-                <label for="voice">Dialect</label>
-                <select name="voice" id="voice"></select>
+            <div id="start-session">
+                <div id="play-langs" class="option">
+                    <label for="voice">Select Dialect</label>
+                    <select name="voice" id="voice"></select>
+                </div>
+                <div id="play-slide" class="icon flex align-center justify-center">
+                    <img id="play-icon" src="assets/icons/play.svg" alt="back to previous slide"/>
+                </div>
             </div>
             <div class="audio flex align-center justify-center">
                 <div id="auto-play" class="icon flex align-center justify-center icon-bg">
@@ -164,9 +170,6 @@
                 </div>
             </div>
              <div class="control flex align-center">
-                <div id="play-slide" class="icon flex align-center justify-center">
-                    <img id="play-icon" src="assets/icons/play.svg" alt="back to previous slide"/>
-                </div>
                 <div id="prev-slide" class="icon flex align-center justify-center icon-bg">
                     <img id="prev-icon" src="assets/icons/arrow-left.svg" alt="back to previous slide"/>
                 </div>
