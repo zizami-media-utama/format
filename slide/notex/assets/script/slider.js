@@ -194,8 +194,22 @@ document.addEventListener("impress:stepenter", function(event) {
 // PLAYER CONTROL
 
 // first play
+function useragent() {
+    const userAgent = navigator.userAgent;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
+
+
 document.getElementById('play-slide').addEventListener('click', (event)=> {
-    event.preventDefault(); impress().next();
+
+    event.preventDefault(); 
+    
+    if (useragent()) {
+        screens_full(); impress().next();
+        
+    } else {
+       impress().next();
+    }
 })
 
 
@@ -255,10 +269,7 @@ document.getElementById('full-slide').addEventListener("click", (event)=>{
 
 
 // auto fullscreen
-function isMobileUserAgent() {
-    const userAgent = navigator.userAgent;
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-}
+
 
 if (isMobileUserAgent()) {
     screens_full();
