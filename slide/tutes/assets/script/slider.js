@@ -41,19 +41,19 @@ inputForm.onsubmit = (event) => {
 
 
     ttsRecorder.start()
-      .then(tts => tts.arrayBuffer())
-      .then(({
-        tts, data
-      }) => {
-        // do stuff with `ArrayBuffer`, `AudioBuffer`, `Blob`, `MediaSource`, `MediaStream`, `ReadableStream`
-        console.log(tts, data);
-          tts.audioNode.src = URL.createObjectURL(data);
-          tts.audioNode.title = tts.utterance.text;
-          tts.audioNode.onloadedmetadata = () => {
-            console.log(tts.audioNode.duration);
-            tts.audioNode.play();
-          }
-      })
+  // `tts` : `SpeechSynthesisRecorder` instance, `data` : audio as `dataType` or method call result
+  .then(tts => tts.arrayBuffer())
+  .then(({tts, data}) => {
+    // do stuff with `ArrayBuffer`, `AudioBuffer`, `Blob`,
+    // `MediaSource`, `MediaStream`, `ReadableStream`
+    // `data` : `ArrayBuffer`
+    tts.audioNode.src = URL.createObjectURL(new Blob([data], {type:tts.mimeType}));
+    tts.audioNode.title = tts.utterance.text;
+    tts.audioNode.onloadedmetadata = () => {
+      console.log(tts.audioNode.duration);
+      tts.audioNode.play();
+    }
+  }
 
 
 
