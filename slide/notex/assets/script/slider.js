@@ -55,7 +55,6 @@ let speak_main = (text)=> {
 
     let narator = new SpeechSynthesisUtterance(text); // create a speech synthesis
     narator.voice = voices[0];                        // Choose a specific voice
-    narator.lang  = "id";                             // setup narator langguage
                 
     if ( language.value ) {
 		narator.voice = synth.getVoices().filter(function(voice) { return voice.name == language.value; })[0];
