@@ -29,7 +29,7 @@ synth.cancel();             // clean old session of utterence and start fresh se
 let speak_main = (text)=> {
 
     let narator = new SpeechSynthesisUtterance(text); // create a speech synthesis
-    narator.lang = "id-ID";                           // setup narator langguage
+    narator.lang = "id";                           // setup narator langguage
     narator.voice = voices[0];                        // Choose a specific voice
     synth.speak(narator);                             // start robot speaker
 
