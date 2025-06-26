@@ -41,7 +41,6 @@ inputForm.onsubmit = (event) => {
 
 
     ttsRecorder.start()
-  // `tts` : `SpeechSynthesisRecorder` instance, `data` : audio as `dataType` or method call result
   .then(tts => tts.arrayBuffer())
   .then(({tts, data}) => {
     // do stuff with `ArrayBuffer`, `AudioBuffer`, `Blob`,
