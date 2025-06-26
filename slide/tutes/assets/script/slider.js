@@ -40,18 +40,19 @@ inputForm.onsubmit = (event) => {
     });
 
 
-    ttsRecorder.start()
-  .then(tts => tts.arrayBuffer())
+ttsRecorder.start()
+  .then(tts => tts.readableStream())
   .then(({tts, data}) => {
-    // do stuff with `ArrayBuffer`, `AudioBuffer`, `Blob`,
-    // `MediaSource`, `MediaStream`, `ReadableStream`
-    // `data` : `ArrayBuffer`
-    tts.audioNode.src = URL.createObjectURL(new Blob([data], {type:tts.mimeType}));
-    tts.audioNode.title = tts.utterance.text;
-    tts.audioNode.onloadedmetadata = () => {
-      console.log(tts.audioNode.duration);
-      tts.audioNode.play();
-    }
+    // `data` : `ReadableStream`
+    console.log(tts, data);
+    data.getReader().read().then(({value, done}) => {
+      tts.audioNode.src = URL.createObjectURL(value[0]);
+      tts.audioNode.title = tts.utterance.text;
+      tts.audioNode.onloadedmetadata = () => {
+        console.log(tts.audioNode.duration);
+        tts.audioNode.play();
+      }
+    })
   })
 
 
