@@ -9,7 +9,7 @@ const synth  = window.speechSynthesis;
 const voices = synth.getVoices();
 let playstat = true;
 let autoplay = true;
-
+let language = document.getElementById('voice');
 
 // GLOBAL VARIABLE
 let page_audio = document.getElementById('main-chanel');
@@ -23,16 +23,45 @@ impress().init();           // load impress slide engine
 synth.cancel();             // clean old session of utterence and start fresh session
 
 
+// LANGUAGE NAV
+
+
 
 // MAIN SOURCE
+
+// populate the voice options.
+function speak_lang() {
+    
+	let voices = speechSynthesis.getVoices();                          // Fetch the available voices. 
+  
+	voices.forEach(function(voice, i) {
+        option = document.createElement('option');                   // Create a new option element.
+        option.value = voice.name;                                   // Set the options value and text.
+        option.innerText = option.value.replace("Google", "");
+        language.appendChild(option);                                // Set the options value and text.
+	});
+}
+
+// Execute loadVoices.
+speak_lang();
+
+
+// chrome loads voices asynchronously.
+window.speechSynthesis.onvoiceschanged = function(e) {
+    speak_lang();
+};
 
 let speak_main = (text)=> {
 
     let narator = new SpeechSynthesisUtterance(text); // create a speech synthesis
-    narator.lang = "id";                           // setup narator langguage
     narator.voice = voices[0];                        // Choose a specific voice
-    synth.speak(narator);                             // start robot speaker
+    narator.lang  = "id";                             // setup narator langguage
+                
+    if ( language.value ) {
+		narator.voice = synth.getVoices().filter(function(voice) { return voice.name == language.value; })[0];
+	}
 
+    synth.speak(narator);       
 
     narator.addEventListener("end", (event) => {
         if ( autoplay === true) { impress().next(); }
