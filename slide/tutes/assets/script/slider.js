@@ -24,6 +24,7 @@ if ("onvoiceschanged" in synth) {
 }
 
 inputForm.onsubmit = (event) => {
+  
   event.preventDefault();
 
 
@@ -40,7 +41,7 @@ inputForm.onsubmit = (event) => {
 
 
     ttsRecorder.start()
-      .then(tts => tts.blob())
+      .then(tts => tts.arrayBuffer())
       .then(({
         tts, data
       }) => {
