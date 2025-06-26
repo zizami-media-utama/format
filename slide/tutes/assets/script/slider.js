@@ -34,7 +34,8 @@ inputForm.onsubmit = (event) => {
         voice: "english-us espeak",
         lang: "en-US",
         pitch: .75,
-        rate: 1
+        rate: 1,
+        volume: 1
     }
     });
 
