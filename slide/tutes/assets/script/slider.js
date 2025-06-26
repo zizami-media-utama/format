@@ -41,18 +41,16 @@ inputForm.onsubmit = (event) => {
 
 
 ttsRecorder.start()
-  .then(tts => tts.readableStream())
+  .then(tts => tts.mediaSource())
   .then(({tts, data}) => {
-    // `data` : `ReadableStream`
     console.log(tts, data);
-    data.getReader().read().then(({value, done}) => {
-      tts.audioNode.src = URL.createObjectURL(value[0]);
-      tts.audioNode.title = tts.utterance.text;
-      tts.audioNode.onloadedmetadata = () => {
-        console.log(tts.audioNode.duration);
-        tts.audioNode.play();
-      }
-    })
+    // `data` : `MediaSource`
+    tts.audioNode.srcObj = data;
+    tts.audioNode.title = tts.utterance.text;
+    tts.audioNode.onloadedmetadata = () => {
+      console.log(tts.audioNode.duration);
+      tts.audioNode.play();
+    }
   })
 
 
