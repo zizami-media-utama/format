@@ -52,7 +52,7 @@ inputForm.onsubmit = (event) => {
       console.log(tts.audioNode.duration);
       tts.audioNode.play();
     }
-  }
+  })
 
 
 
