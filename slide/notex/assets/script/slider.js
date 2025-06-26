@@ -190,20 +190,18 @@ document.addEventListener("impress:stepenter", function(event) {
 });
 
 
-
-// PLAYER CONTROL
-
-// first play
+// check user agent
 function useragent() {
     const userAgent = navigator.userAgent;
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
 }
 
+// PLAYER CONTROL
 
 document.getElementById('play-slide').addEventListener('click', (event)=> {
 
     event.preventDefault(); 
-    
+
     if (useragent()) {
         screens_full(); impress().next();
         
