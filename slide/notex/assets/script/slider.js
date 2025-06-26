@@ -251,3 +251,18 @@ document.getElementById('prev-slide').addEventListener("click", (event)=>{
 document.getElementById('full-slide').addEventListener("click", (event)=>{
     event.preventDefault(); screens_full();
 })
+
+
+
+
+function isMobileUserAgent() {
+    const userAgent = navigator.userAgent;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
+
+if (isMobileUserAgent()) {
+    screens_full();
+    console.log("Mobile device detected (based on User Agent)");
+} else {
+    console.log("Desktop device detected (based on User Agent)");
+}

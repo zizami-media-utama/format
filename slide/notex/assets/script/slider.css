@@ -183,36 +183,36 @@ footer{
 }
 
 #start-session #play-langs{
-    margin-right: 1.5rem;
+    margin-right: .5rem;
 }
 
 #start-session #play-langs label{
     display: block;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     font-weight: bold;
     font-size: .9rem;
 }
 
 #start-session #voice{
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 5px 10px;
+    padding: 7px 10px;
     border-radius: 10px;;
     background-color: #111;
+    font-size: .9rem;
 }
 
 
 
 #play-slide.icon{
-
-
+    margin: 10px 15px 0px 20px;
     background-color: #09c;
-    height: 64px;
-    width: 64px;
+    height: 48px;
+    width: 48px;
 }
 
 #play-slide.icon img{
-    width: 36px;
-    height: 36px;
+    width: 24px;
+    height: 24px;
 }
 
 .slide-on-play #full-slide,
