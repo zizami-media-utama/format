@@ -40,18 +40,13 @@ inputForm.onsubmit = (event) => {
 
 
 ttsRecorder.start()
-  // `tts` : `SpeechSynthesisRecorder` instance, `data` : audio as `dataType` or method call result
-  .then(tts => tts.arrayBuffer())
+  .then(tts => tts.audioBuffer())
   .then(({tts, data}) => {
-    // do stuff with `ArrayBuffer`, `AudioBuffer`, `Blob`,
-    // `MediaSource`, `MediaStream`, `ReadableStream`
-    // `data` : `ArrayBuffer`
-    tts.audioNode.src = URL.createObjectURL(new Blob([data], {type:tts.mimeType}));
-    tts.audioNode.title = tts.utterance.text;
-    tts.audioNode.onloadedmetadata = () => {
-      console.log(tts.audioNode.duration);
-      tts.audioNode.play();
-    }
+    // `data` : `AudioBuffer`
+    let source = tts.audioContext.createBufferSource();
+    source.buffer = data;
+    source.connect(tts.audioContext.destination);
+    source.start()
   })
 
 
