@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id-ID">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perpustakaan Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/script/slider.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module" ></script>
+    <link rel="manifest" href="assets/script/manifest.json">
+    <script type="text/javascript" src="https://unpkg.com/speech-synthesis-recorder@1.2.1/SpeechSynthesisRecorder.js"></script>
+</head>
+<body id="we-slide">
+    <header>
+        <div id="progrestime" class="progress-container hide">
+            <div class="progress-bar" id="progressbar"></div>
+        </div>
+    </header>
+    <main class="flex-center">\
+        <div id="wall"></div>
+        <form class="wrap">
+            <textarea id="speakup" name="speakup" rows="10" cols="75"> Jakarta - Mantan Menteri Perdagangan Thomas Trikasih Lembong alias Tom Lembong segera diperiksa sebagai terdakwa kasus dugaan korupsi importasi gula. Pemeriksaan terdakwa ini dilakukan setelah selesai memeriksa saksi dan ahli meringankan yang diajukan Tom.
+"Baik alhamdulillah sudah kita selesaikan pemeriksaan ahli yang dihadirkan oleh terdakwa dan tim penasihat hukum. Jadi dengan demikian agenda sidang selanjutnya pemeriksaan terdakwa," kata ketua majelis hakim Dennie Arsan Fatrika di Pengadilan Tipikor Jakarta Pusat, Kamis (26/6/2025).</textarea>
+            <br>
+            <select></select>
+            <br>
+            <button id="play" type="submit"> Convert to MP3</button>
+        </form>
+    </main>
+
+    <footer>
+        <div id="panel" class="flex align-center slide-on-stop">
+            <div class="audio flex align-center justify-center">
+                <div id="auto-play" class="icon flex align-center justify-center icon-bg">
+                    <img id="mute-icon" src="assets/icons/auto.svg" data-unmute="assets/icons/auto.svg" data-muted="assets/icons/manual.svg" alt="mute and unmuted icons"/>
+                </div>
+                <div id="pend-audio" class="icon flex align-center justify-center icon-bg">
+                    <img id="pend-icon" src="assets/icons/pause.svg" data-pause="assets/icons/pause.svg" data-play="assets/icons/play.svg" alt="play and pause icons"/>
+                </div>
+            </div>
+             <div class="control flex align-center">
+                <div id="prev-slide" class="icon flex align-center justify-center icon-bg">
+                    <img id="prev-icon" src="assets/icons/arrow-left.svg" alt="back to previous slide"/>
+                </div>
+                <div id="full-slide" class="icon flex align-center justify-center icon-bg">
+                    <img id="full-icon" src="assets/icons/maximize.svg" data-maxs="assets/icons/maximize.svg" data-mins="assets/icons/minimize.svg" alt="fulscreen mode"/>
+                </div>
+                <div id="next-slide" class="icon flex align-center justify-center icon-bg">
+                    <img id="next-icon" src="assets/icons/arrow-right.svg" alt="go to next slide"/>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js"></script>
+    <script src="assets/script/accent.js"></script>
+    <script src="assets/script/slider.js"></script>
+</body>
+</html>
