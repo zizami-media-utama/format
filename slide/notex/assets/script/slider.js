@@ -263,15 +263,3 @@ document.getElementById('prev-slide').addEventListener("click", (event)=>{
 document.getElementById('full-slide').addEventListener("click", (event)=>{
     event.preventDefault(); screens_full();
 })
-
-
-
-// auto fullscreen
-
-
-if (isMobileUserAgent()) {
-    screens_full();
-    console.log("Mobile device detected (based on User Agent)");
-} else {
-    console.log("Desktop device detected (based on User Agent)");
-}
