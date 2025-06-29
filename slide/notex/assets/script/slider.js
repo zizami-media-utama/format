@@ -45,16 +45,8 @@ window.speechSynthesis.onvoiceschanged = function(e) { speak_lang(); };
 let speak_main = (text)=> {
 
     let narator = new SpeechSynthesisUtterance(text);                       // create a speech synthesis
-                
-    if ( language.value ) {
-        console.log( language.value );
-		narator.voice = synth.getVoices().filter(function(voice) { return voice.name == language.value; })[0];
-        narator.lang  = "id";
-    }
-    else {
-        narator.voice = voices[0];                                          // Choose a specific voice
-        narator.lang  = "id";                                               // setup narator langguage
-	}
+    narator.voice = voices[0];                                          // Choose a specific voice
+    narator.lang  = "id";                                               // setup narator langguage
 
     synth.speak(narator);       
 
